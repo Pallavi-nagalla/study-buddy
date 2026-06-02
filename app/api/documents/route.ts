@@ -21,8 +21,7 @@ export async function GET(req: NextRequest) {
     });
 
     return NextResponse.json({ documents });
-  } catch (err) {
-    console.error(err);
+  } catch {
     return NextResponse.json(
       { error: "Failed to fetch documents" },
       { status: 500 },

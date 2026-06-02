@@ -23,9 +23,7 @@ async function ollamaGenerate(prompt: string): Promise<string> {
       if (parsed.response !== undefined) {
         fullResponse += parsed.response;
       }
-    } catch {
-      // skip bad lines
-    }
+    } catch {}
   }
 
   return fullResponse;
@@ -55,9 +53,7 @@ JSON:`;
   }>;
 }
 
-export async function generateMCQs(
-  text: string,
-): Promise<
+export async function generateMCQs(text: string): Promise<
   Array<{
     question: string;
     options: string[];

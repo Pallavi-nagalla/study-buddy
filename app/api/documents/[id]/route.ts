@@ -28,8 +28,7 @@ export async function GET(
     });
 
     return NextResponse.json({ document, flashcards, mcqs });
-  } catch (err) {
-    console.error(err);
+  } catch {
     return NextResponse.json(
       { error: "Failed to fetch document" },
       { status: 500 },

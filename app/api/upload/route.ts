@@ -19,7 +19,6 @@ export async function POST(req: NextRequest) {
     const buffer = Buffer.from(await file.arrayBuffer());
     const parsed = await pdf(buffer);
 
-    // Strip null bytes and non-UTF8 characters
     const content = parsed.text
       .replace(/\x00/g, "")
       .replace(/[\x01-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "")
@@ -41,8 +40,7 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ document });
-  } catch (err) {
-    console.error(err);
+  } catch {
     return NextResponse.json({ error: "Upload failed" }, { status: 500 });
   }
 }

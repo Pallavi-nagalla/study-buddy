@@ -50,8 +50,7 @@ export async function POST(req: NextRequest) {
     const mcqs = await prisma.mCQ.findMany({ where: { documentId } });
 
     return NextResponse.json({ flashcards, mcqs });
-  } catch (err) {
-    console.error(err);
+  } catch {
     return NextResponse.json({ error: "Generation failed" }, { status: 500 });
   }
 }

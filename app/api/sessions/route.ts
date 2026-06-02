@@ -25,8 +25,7 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ session });
-  } catch (err) {
-    console.error(err);
+  } catch {
     return NextResponse.json(
       { error: "Failed to save session" },
       { status: 500 },
@@ -50,8 +49,7 @@ export async function GET(req: NextRequest) {
     });
 
     return NextResponse.json({ sessions });
-  } catch (err) {
-    console.error(err);
+  } catch {
     return NextResponse.json(
       { error: "Failed to fetch sessions" },
       { status: 500 },
