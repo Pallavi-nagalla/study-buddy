@@ -1,0 +1,37 @@
+{
+  "name": "study-buddy",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@prisma/client": "5.22.0",
+    "@supabase/ssr": "^0.10.3",
+    "@supabase/supabase-js": "^2.106.2",
+    "@types/pdf-parse": "^1.1.5",
+    "framer-motion": "^11.0.0",
+    "jsonrepair": "^3.14.0",
+    "lucide-react": "^0.383.0",
+    "next": "14.2.5",
+    "pdf-parse": "^1.1.1",
+    "prisma": "5.22.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "recharts": "^2.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5"
+  }
+}

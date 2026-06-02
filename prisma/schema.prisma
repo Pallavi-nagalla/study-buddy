@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Document {
+  id         String      @id @default(cuid())
+  userId     String
+  title      String
+  content    String      @db.Text
+  createdAt  DateTime    @default(now())
+  flashcards Flashcard[]
+  mcqs       MCQ[]
+  sessions   Session[]
+}
+
+model Flashcard {
+  id         String   @id @default(cuid())
+  documentId String
+  question   String   @db.Text
+  answer     String   @db.Text
+  difficulty String   @default("medium")
+  document   Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+}
+
+model MCQ {
+  id            String   @id @default(cuid())
+  documentId    String
+  question      String   @db.Text
+  options       String[]
+  correctAnswer Int
+  explanation   String   @db.Text
+  document      Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+}
+
+model Session {
+  id           String          @id @default(cuid())
+  documentId   String
+  userId       String
+  score        Int
+  total        Int
+  mode         String
+  createdAt    DateTime        @default(now())
+  document     Document        @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  answers      SessionAnswer[]
+}
+
+model SessionAnswer {
+  id         String  @id @default(cuid())
+  sessionId  String
+  questionId String
+  correct    Boolean
+  session    Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+}
